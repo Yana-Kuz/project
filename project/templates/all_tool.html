@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Все инструменты</title>
+</head>
+<body class="container">
+    {% if tools.count > 0 %}
+    <h2>Список инструментов</h2>
+    <table>
+        <tr><th>Id</th><th>consumer_key</th><th>consumer_secret</th><th>launch_url</th></tr>
+        {% for tool in tools %}
+        <tr><td>{{ tool.id }}</td><td>{{ tool.consumer_key }}</td><td>{{ tool.consumer_secret }}</td><td>{{tool.launch_url}}</td><td><script src="https://apis.google.com/js/platform.js" async defer></script>
+            <g:sharetoclassroom url="http://127.0.0.1:8000/lti_python?id={{tool.id}}" size="32"></g:sharetoclassroom></td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

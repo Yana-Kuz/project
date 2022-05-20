@@ -1,0 +1,15 @@
+<head>
+    <meta charset="UTF-8">
+    <title>User Information Form</title>
+</head>
+<meta charset="UTF-8">
+    <title>User Information Form</title>
+    </head>
+    <body>
+    <form action="https://lti.tools/saltire/tp" method="POST" target="_blank">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="submit" value="Submit"/>
+    </form>
+    
+    </body>

@@ -1,0 +1,32 @@
+
+<head>
+    
+    <script>
+        document.getElementById("myButton").submit();
+        function doSubmit() {
+            document.ltiLaunchForm.submit();
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title>User Information Form</title>
+</head>
+    <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+<body onLoad="doSubmit();">
+    {% if not user.is_authenticated %}
+        <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+    {% else %}
+
+        <form action="{{ launch_url }}"
+            name="ltiLaunchForm"
+            id="ltiLaunchForm"
+            method="POST"
+            encType="application/x-www-form-urlencoded">
+        {% for key, value in launch_data.items %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+        {% endfor %}
+        <!-- <button type="submit" id="myButton">Launch the tool</button> -->
+        </form>
+    {%  endif %}
+<!-- <a href="{% url 'social:begin' 'lti_python' %}">Login with Google</a> -->
+
+</body>
